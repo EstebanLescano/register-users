@@ -1,7 +1,8 @@
-package com.dmh.registerusers.Controller;
+package com.dmh.registerusers.controller;
 
-import com.dmh.registerusers.Service.UserService;
-import com.dmh.registerusers.UserDTO.User;
+import com.dmh.registerusers.service.UserService;
+import com.dmh.registerusers.userDTO.UserDTO;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -16,12 +17,12 @@ class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public UserDTO createUser(@Valid @RequestBody UserDTO user) {
         return userService.createUser(user);
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUser(@PathVariable String id) {
+    public Optional<UserDTO> getUser(@PathVariable String id) {
         return userService.getUser(id);
     }
 }

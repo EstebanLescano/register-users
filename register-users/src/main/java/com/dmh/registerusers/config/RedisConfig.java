@@ -1,4 +1,4 @@
-package com.dmh.registerusers.Config;
+package com.dmh.registerusers.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 
 @Configuration
+
 public class RedisConfig {
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
