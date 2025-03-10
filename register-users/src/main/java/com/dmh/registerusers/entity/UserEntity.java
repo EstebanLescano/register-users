@@ -1,29 +1,34 @@
 package com.dmh.registerusers.entity;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
-@Table(name = "users")
+@Table(name = "authusers", schema = "public")
+@EntityListeners(AuditingEntityListener.class)
 public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false, unique = true)
+    private UUID id;
+    private String nyap;
+    private String dni;
     private String email;
+    private String telefono;
+    private String password;
+    private String cvu;
+    private String alias;
 
-    // Getters y Setters
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    @CreatedDate
+    private LocalDateTime createdAt;
+
 }

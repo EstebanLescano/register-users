@@ -1,4 +1,4 @@
-package com.dmh.registerusers.excepcionesPersonalizadas;
+package com.dmh.registerusers.excepcionespersonalizadas;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

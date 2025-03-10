@@ -1,6 +1,6 @@
-package com.dmh.registerusers.redisRepository;
+package com.dmh.registerusers.redisrepository;
 
-import com.dmh.registerusers.entityRedis.UserRedis;
+import com.dmh.registerusers.entityredis.UserRedis;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,12 +19,11 @@ public class UserRedisRepository {
         this.redisTemplate = redisTemplate;
     }
 
-    public UserRedis save(UserRedis userRedis) {
-        String key = "User:" + userRedis.getId();
+    public void saveUserRedis(UserRedis userRedis) {
+        String key = "User:" + String.valueOf(userRedis.getId());
         hashOperations.put("User", userRedis.getId(), userRedis);
         // ⏳ Establecer tiempo de expiración (ejemplo: 60 minutos)
         redisTemplate.expire(key, Duration.ofMinutes(60));
-        return userRedis;
     }
 
     public Optional<UserRedis> findById(String id) {

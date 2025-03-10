@@ -1,5 +1,6 @@
 version: '3.8'
 
+#ejecutar desde docker desktop o docker-compose up
 services:
   postgres:
     image: postgres:latest

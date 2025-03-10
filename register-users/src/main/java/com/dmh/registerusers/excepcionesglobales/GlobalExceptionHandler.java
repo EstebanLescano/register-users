@@ -1,4 +1,4 @@
-package com.dmh.registerusers.excepcionesGlobales;
+package com.dmh.registerusers.excepcionesglobales;
 
 /*
 @ControllerAdvice
