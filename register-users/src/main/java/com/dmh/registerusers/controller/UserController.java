@@ -20,7 +20,7 @@ public class UserController {
     }
 
     // Crear un usuario
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<String> createUser(@Validated @RequestBody UserDTO userDTO) {
         try {
             userService.createUser(userDTO);
@@ -36,11 +36,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Todos Usuarios creados exitosamente");
     }
 
-    // Obtener un usuario por su ID
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable String id) {
         Optional<UserDTO> userDTO = Optional.ofNullable(userService.getUserById(id));
-        // Puedes enviar una respuesta vacía o un mensaje de error.
         return userDTO
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -54,7 +52,6 @@ public class UserController {
     }
 
 
-
     // Eliminar un usuario
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable String id) {
@@ -62,7 +59,7 @@ public class UserController {
             userService.deleteUser(id);
             return ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado exitosamente");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al eliminar el usuario con ID: " + id);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(String.format("Error al eliminar el usuario con ID: %s no fue encontrado",id));
         }
     }
 }

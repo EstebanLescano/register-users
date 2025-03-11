@@ -21,7 +21,7 @@ public class RedisTestController {
 
     @GetMapping("/get")
     public String getKey() {
-        return redisTemplate.opsForValue().get("testKey");
+        return redisTemplate.opsForValue().get("testKey OK");
     }
 }
 

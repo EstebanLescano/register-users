@@ -9,6 +9,7 @@ import com.dmh.registerusers.mapperdto.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -127,9 +128,12 @@ public class UserService {
         return postgresRepository.findAll();
 
     }
-
+    @CacheEvict(value = "users", key = "#id")
     public void deleteUser(String id) {
-
+        if (!postgresRepository.existsById(id)) {
+            throw new IllegalArgumentException("Usuario con ID %d no encontrado.");
+        }
+        postgresRepository.deleteById(id);
     }
 
 
