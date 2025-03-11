@@ -9,4 +9,5 @@ public interface UserPostgresRepository extends JpaRepository<UserEntity, String
 
     Optional<UserEntity> findByEmail(String email);
 
+    Optional<UserEntity> findById(String id);
 }

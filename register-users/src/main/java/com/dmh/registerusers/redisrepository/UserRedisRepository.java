@@ -20,7 +20,7 @@ public class UserRedisRepository {
     }
 
     public void saveUserRedis(UserRedis userRedis) {
-        String key = "User:" + String.valueOf(userRedis.getId());
+        String key = "User:" + userRedis.getId();
         hashOperations.put("User", userRedis.getId(), userRedis);
         // ⏳ Establecer tiempo de expiración (ejemplo: 60 minutos)
         redisTemplate.expire(key, Duration.ofMinutes(60));
@@ -29,4 +29,5 @@ public class UserRedisRepository {
     public Optional<UserRedis> findById(String id) {
         return Optional.ofNullable(hashOperations.get("User", id));
     }
+
 }

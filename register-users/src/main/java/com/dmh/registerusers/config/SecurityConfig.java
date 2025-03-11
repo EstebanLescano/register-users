@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**",
-                                "/users/**,/redis-test/**,/api/redis/**").permitAll()
+                                "/users/**","/redis-test/**","/api/redis/**").permitAll()
                 .anyRequest().authenticated()// Resto de rutas requieren autenticación
                 );
 

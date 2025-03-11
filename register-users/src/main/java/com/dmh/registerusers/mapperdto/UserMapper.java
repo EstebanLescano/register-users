@@ -4,7 +4,6 @@ import com.dmh.registerusers.entity.UserEntity;
 import com.dmh.registerusers.entityredis.UserRedis;
 import com.dmh.registerusers.model.UserDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
@@ -19,4 +18,6 @@ public interface UserMapper {
     UserDTO toDTO(UserRedis redis);
 
     UserRedis toRedis(UserDTO user);
+
+    Object toDTO(UserDTO userDTO);
 }
