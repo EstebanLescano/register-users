@@ -1,10 +1,13 @@
 package com.dmh.registerusers.model;
 
 
+import jakarta.validation.constraints.Email;
+
 public class UserDTO {
 
     private String nombreyapellido;
     private String dni;
+    @Email(message = "El email debe tener un formato válido.")
     private String email;
     private String telefono;
     private String password;

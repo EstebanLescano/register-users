@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * crear una clave compuesta o personalizada para la caché
+ */
+
 @Data
 @NoArgsConstructor
 public class UserCacheKey implements Serializable {
