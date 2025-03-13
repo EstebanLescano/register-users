@@ -19,7 +19,6 @@ public class UserEntity {
     private String password;
     private String cvu;
     private String alias;
-
     @CreatedDate
     private LocalDateTime createdAt;
 

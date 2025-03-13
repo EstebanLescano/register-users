@@ -4,7 +4,7 @@ package com.dmh.registerusers.model;
 import jakarta.validation.constraints.Email;
 
 public class UserDTO {
-
+    private String id;
     private String nombreyapellido;
     private String dni;
     @Email(message = "El email debe tener un formato válido.")
@@ -13,18 +13,18 @@ public class UserDTO {
     private String password;
     private String cvu;
     private String alias;
+    private String createdAt;
 
     public UserDTO() {
+
     }
 
-    public UserDTO(String nombreyapellido, String dni, String email, String telefono, String password, String cvu, String alias) {
-        this.nombreyapellido = nombreyapellido;
-        this.dni = dni;
-        this.email = email;
-        this.telefono = telefono;
-        this.password = password;
-        this.cvu = cvu;
-        this.alias = alias;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombreyapellido() {
@@ -81,5 +81,13 @@ public class UserDTO {
 
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }

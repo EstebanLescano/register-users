@@ -19,5 +19,4 @@ public interface UserMapper {
 
     UserRedis toRedis(UserDTO user);
 
-    Object toDTO(UserDTO userDTO);
 }

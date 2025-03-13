@@ -3,12 +3,14 @@ package com.dmh.registerusers.mapperdto;
 import com.dmh.registerusers.entity.UserEntity;
 import com.dmh.registerusers.entityredis.UserRedis;
 import com.dmh.registerusers.model.UserDTO;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-11T17:27:32-0300",
+    date = "2025-03-13T07:56:34-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.6 (Amazon.com Inc.)"
 )
 @Component
@@ -22,6 +24,7 @@ public class UserMapperImpl implements UserMapper {
 
         UserDTO userDTO = new UserDTO();
 
+        userDTO.setId( entity.getId() );
         userDTO.setNombreyapellido( entity.getNombreyapellido() );
         userDTO.setDni( entity.getDni() );
         userDTO.setEmail( entity.getEmail() );
@@ -29,6 +32,9 @@ public class UserMapperImpl implements UserMapper {
         userDTO.setPassword( entity.getPassword() );
         userDTO.setCvu( entity.getCvu() );
         userDTO.setAlias( entity.getAlias() );
+        if ( entity.getCreatedAt() != null ) {
+            userDTO.setCreatedAt( DateTimeFormatter.ISO_LOCAL_DATE_TIME.format( entity.getCreatedAt() ) );
+        }
 
         return userDTO;
     }
@@ -41,6 +47,7 @@ public class UserMapperImpl implements UserMapper {
 
         UserEntity userEntity = new UserEntity();
 
+        userEntity.setId( user.getId() );
         userEntity.setNombreyapellido( user.getNombreyapellido() );
         userEntity.setDni( user.getDni() );
         userEntity.setEmail( user.getEmail() );
@@ -48,6 +55,9 @@ public class UserMapperImpl implements UserMapper {
         userEntity.setPassword( user.getPassword() );
         userEntity.setCvu( user.getCvu() );
         userEntity.setAlias( user.getAlias() );
+        if ( user.getCreatedAt() != null ) {
+            userEntity.setCreatedAt( LocalDateTime.parse( user.getCreatedAt() ) );
+        }
 
         return userEntity;
     }
@@ -60,6 +70,7 @@ public class UserMapperImpl implements UserMapper {
 
         UserDTO userDTO = new UserDTO();
 
+        userDTO.setId( redis.getId() );
         userDTO.setNombreyapellido( redis.getNombreyapellido() );
         userDTO.setDni( redis.getDni() );
         userDTO.setEmail( redis.getEmail() );
@@ -79,6 +90,7 @@ public class UserMapperImpl implements UserMapper {
 
         UserRedis userRedis = new UserRedis();
 
+        userRedis.setId( user.getId() );
         userRedis.setNombreyapellido( user.getNombreyapellido() );
         userRedis.setDni( user.getDni() );
         userRedis.setEmail( user.getEmail() );
@@ -88,16 +100,5 @@ public class UserMapperImpl implements UserMapper {
         userRedis.setAlias( user.getAlias() );
 
         return userRedis;
-    }
-
-    @Override
-    public Object toDTO(UserDTO userDTO) {
-        if ( userDTO == null ) {
-            return null;
-        }
-
-        Object object = new Object();
-
-        return object;
     }
 }
