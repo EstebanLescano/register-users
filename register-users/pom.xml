@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dmh</groupId>
-	<artifactId>registerusers</artifactId>
+	<artifactId>dmhouse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>register-users</name>
 	<description>Demo project for Spring Boot</description>
@@ -38,6 +38,11 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>4.29.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
