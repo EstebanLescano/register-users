@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 
 public class UserDTO {
     private String id;
-    private String nombreyapellido;
+    private String name;
     private String dni;
     @Email(message = "El email debe tener un formato válido.")
     private String email;
@@ -27,12 +27,12 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getNombreyapellido() {
-        return nombreyapellido;
+    public String getName() {
+        return name;
     }
 
-    public void setNombreyapellido(String nombreyapellido) {
-        this.nombreyapellido = nombreyapellido;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDni() {

@@ -3,7 +3,7 @@ package com.dmh.entity;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
-
+import java.util.UUID;
 
 @Entity
 @Table(name = "authusers", schema = "public")
@@ -11,14 +11,24 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-    private String nombreyapellido;
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
+
+    private String name;
+
+    @Column(nullable = false, unique = true)
     private String dni;
+
     private String email;
+
     private String telefono;
+
     private String password;
+
     private String cvu;
+
     private String alias;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
@@ -26,20 +36,20 @@ public class UserEntity {
         // TODO document why this constructor is empty
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public String getNombreyapellido() {
-        return nombreyapellido;
+    public String getName() {
+        return name;
     }
 
-    public void setNombreyapellido(String nombreyapellido) {
-        this.nombreyapellido = nombreyapellido;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDni() {

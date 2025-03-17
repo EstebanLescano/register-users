@@ -4,7 +4,7 @@ package com.dmh.entityredis;
 public class UserRedis {
 
     private String id;
-    private String nombreyapellido;
+    private String name;
     private String dni;
     private String email;
     private String telefono;
@@ -24,12 +24,12 @@ public class UserRedis {
         this.id = id;
     }
 
-    public String getNombreyapellido() {
-        return nombreyapellido;
+    public String getName() {
+        return name;
     }
 
-    public void setNombreyapellido(String nombreyapellido) {
-        this.nombreyapellido = nombreyapellido;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDni() {
